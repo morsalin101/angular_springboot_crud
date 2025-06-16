@@ -5,7 +5,6 @@
   <div class="card-body">
 
     <div class="m-1">
-      <!-- Changed routerLink and button text for Employee creation -->
       <a [routerLink]="['add-employee']" class="btn btn-success btn-sm">Create Employee</a>
     </div>
 
@@ -34,7 +33,7 @@
             </td>
           </tr>
         }
-        <!-- Fallback for no employees, consider using Angular's @empty block for cleaner code in modern Angular -->
+       
         @empty {
             <tr>
                 <td colspan="5" class="text-center text-muted">No employees found. Please add one.</td>
