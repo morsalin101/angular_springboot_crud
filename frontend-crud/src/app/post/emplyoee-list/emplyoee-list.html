@@ -1,0 +1,47 @@
+<!-- src/app/employee-list/employee-list.component.html -->
+
+<div class="card mt-5">
+  <h3 class="card-header p-3 text-center">Angular CRUD App: Employees</h3>
+  <div class="card-body">
+
+    <div class="m-1">
+      <!-- Changed routerLink and button text for Employee creation -->
+      <a [routerLink]="['add-employee']" class="btn btn-success btn-sm">Create Employee</a>
+    </div>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th> <!-- Added Name header -->
+          <th>Email</th>
+          <th>Department</th>
+          <th width="250px">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Updated @for loop to iterate over 'employees' -->
+        @for(employee of employees; track employee.id){
+          <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td> <!-- Display employee name -->
+            <td>{{ employee.email }}</td> <!-- Display employee email -->
+            <td>{{ employee.department }}</td> <!-- Display employee department -->
+            <td>
+              <!-- Example buttons for Edit and Delete, adjust routerLink for edit -->
+              <a [routerLink]="['/edit', employee.id]" class="btn btn-primary btn-sm me-2 rounded">Edit</a>
+              <button (click)="deleteEmployee(employee.id!)" class="btn btn-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+        }
+        <!-- Fallback for no employees, consider using Angular's @empty block for cleaner code in modern Angular -->
+        @empty {
+            <tr>
+                <td colspan="5" class="text-center text-muted">No employees found. Please add one.</td>
+            </tr>
+        }
+      </tbody>
+    </table>
+
+  </div>
+</div>
